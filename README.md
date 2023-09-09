@@ -72,3 +72,12 @@ $ kubectl create namespace minio-tenant-sample-bucket-provider
 ### MinIO Tenant のデプロイ
 $ kustomize build ./base  | kubectl apply -f -
 ```
+
+### パラメタ設定
+
+- [これ](https://techstep.hatenablog.com/entry/2020/02/02/134702) が分かりやすい
+
+```yaml
+spec.mon.allowMultiplePerNode: false ## 1 ノードに複数の MON を配置することを許可するかどうか
+spec.mgr.allowMultiplePerNode: false ## 1 ノードに複数の MGR を配置することを許可するかどうか
+```
