@@ -1,0 +1,6 @@
+resources:
+  - "common"
+  - "crds.yaml"
+  - "operator.yaml"
+  - "ceph-cluster.yaml"
+  - "block-storage.yaml"

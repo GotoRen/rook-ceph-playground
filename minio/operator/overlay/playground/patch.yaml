@@ -1,0 +1,26 @@
+### Posted by Ren Goto. ###
+# minio-operator console cannot create service resources by default.
+# Therefore, it is necessary to create and apply type:LoadBalancer separately.
+# Add the "-svc" suffix to the patch's Service resource.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: console-svc
+  namespace: minio-operator
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.10.88
+  ports:
+    - name: http
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+    - name: https
+      port: 9443
+      protocol: TCP
+      targetPort: 9443
+  selector:
+    app.kubernetes.io/instance: minio-operator-console
+    app.kubernetes.io/name: operator
+  sessionAffinity: None

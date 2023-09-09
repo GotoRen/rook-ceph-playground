@@ -1,0 +1,9 @@
+resources:
+  - "serviceaccount.yaml"
+  - "secret.yaml"
+  - "clusterrole.yaml"
+  - "clusterrolebinding.yaml"
+  - "configmap.yaml"
+  - "deployment.yaml"
+  - "service.yaml"
+  - "crds.yaml"

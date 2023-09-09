@@ -1,0 +1,42 @@
+### Posted by Ren Goto. ###
+# minio-tenant cannot create service resources by default.
+# Therefore, it is necessary to create and apply type:LoadBalancer separately.
+# Add the "-svc" suffix to the patch's Service resource.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-svc
+  namespace: minio-tenant-sample-bucket-provider
+  labels:
+    v1.min.io/tenant: sample-bucket-provider
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.10.91
+  ports:
+    - name: https-minio
+      nodePort: 32357
+      port: 443
+      protocol: TCP
+      targetPort: 9000
+  selector:
+    v1.min.io/tenant: sample-bucket-provider
+  sessionAffinity: None
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-bucket-provider-console-svc
+  namespace: minio-tenant-sample-bucket-provider
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.10.10.90
+  ports:
+    - name: https-console
+      nodePort: 31440
+      port: 9443
+      protocol: TCP
+      targetPort: 9443
+  selector:
+    v1.min.io/tenant: sample-bucket-provider
+  sessionAffinity: None

@@ -1,0 +1,6 @@
+resources:
+  - "../../base"
+  - "sample-bucket-provider"
+
+commonLabels:
+  env: playground
