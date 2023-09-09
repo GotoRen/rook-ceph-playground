@@ -2,7 +2,7 @@
 
 Kustomize を使用して Rook/Ceph をデプロイする。[参考](https://rook.io/docs/rook/latest/Getting-Started/quickstart/#deploy-the-rook-operator)
 
-※ <u>3 ノード以上の ベアメタル Kubernetes クラスタが構築済みであるとします</u>
+**※ 3 ノード以上の ベアメタル Kubernetes クラスタが構築済みであるとします。**
 
 ## Requirement
 
